@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap");
+
+:root {
+  --main-font: "Playwrite NZ Basic", cursive;
+  --main-color: #f2f1c4;
+  --sub-color: black;
+}
+
+h1,
+p,
+label,
+input {
+  font-family: var(--main-font);
+}
+
+html {
+  background-color: #faf3e1;
+}
+
+.form-actions {
+  font-family: var(--main-font);
+}
+
+form {
+  font-family: var(--main-font);
+}
+
+.project-sidebar {
+  font-family: var(--main-font);
+}
+
+.project-page {
+  font-family: var(--main-font);
+}
