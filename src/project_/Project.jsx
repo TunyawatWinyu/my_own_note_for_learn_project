@@ -6,7 +6,6 @@ const Project = ({ selectedProject, project, setProject }) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Leggo i task del progetto selezionato dal localStorage
     const savedTask = localStorage.getItem(`task-${selectedProject.id}`);
     setArrayTask(savedTask ? JSON.parse(savedTask) : []);
   }, [selectedProject.id]);
@@ -111,7 +110,9 @@ const Project = ({ selectedProject, project, setProject }) => {
         <div className="w-[800px]  h-auto">
           {arrayTask.length === 0 ? (
             <div>
-              <p className="text-2xl">This project does not have a task yet</p>
+              <p className="text-xl text-gray-500">
+                This project does not have a task yet
+              </p>
             </div>
           ) : (
             <ul>
