@@ -1,27 +1,33 @@
 import SideBar from "./SideBar/SideBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormAddProject from "./FormAddProject/FormAddProject";
 import Project from "./project_/Project";
 
 const App = () => {
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState(() => {
+    const savedProject = localStorage.getItem("project");
+    return savedProject ? JSON.parse(savedProject) : [];
+  });
   const [addProject, setAddProject] = useState(false);
   const [form, setForm] = useState({
     title: "",
     description: "",
     date: "",
   });
-
   const [selectedId, setSelectedId] = useState(null);
   const [error, setError] = useState("");
 
-  const selectedProject = project.find((p) => p.id === selectedId);
+  const selectedProject = project.find((prev) => prev.id === selectedId);
 
   const initialForm = {
     title: "",
     description: "",
     date: "",
   };
+
+  useEffect(() => {
+    localStorage.setItem("project", JSON.stringify(project));
+  }, [project]);
 
   const handlerChange = (e) => {
     const { name, value } = e.target;
@@ -78,7 +84,11 @@ const App = () => {
           error={error}
         />
       ) : selectedProject ? (
-        <Project selectedProject={selectedProject} />
+        <Project
+          selectedProject={selectedProject}
+          project={project}
+          setProject={setProject}
+        />
       ) : (
         <div className="empty-state-action w-full flex flex-col justify-center items-center">
           <h1 className="text-2xl my-[10px]">No Project Selected</h1>

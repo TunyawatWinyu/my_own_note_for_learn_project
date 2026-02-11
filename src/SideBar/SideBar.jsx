@@ -17,8 +17,10 @@ const SideBar = ({ onAddProject, project, setSelectedId }) => {
         </div>
       </div>
       <ul className="project-sidebar flex flex-col justify-center items-center mt-[60px]">
-        {project === 0 ? (
-          <p>No Project</p>
+        {project.length === 0 ? (
+          <div>
+            <p className="text-white text-xl">does not any project yet</p>
+          </div>
         ) : (
           <ul className="w-full text-center">
             {project.map((el) => {
