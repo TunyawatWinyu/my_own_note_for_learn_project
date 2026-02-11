@@ -1,6 +1,7 @@
 import SideBar from "./SideBar/SideBar";
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import FormAddProject from "./FormAddProject/FormAddProject";
+import Project from "./project_/Project";
 
 const App = () => {
   const [project, setProject] = useState([]);
@@ -77,12 +78,7 @@ const App = () => {
           error={error}
         />
       ) : selectedProject ? (
-        <div className="project-page w-full flex justify-center items-center ">
-          <div className="w-[80%] h-[90vh]">
-            <h1 className="text-4xl my-[40px]">{selectedProject.title}</h1>
-            <p>{selectedProject.date}</p>
-          </div>
-        </div>
+        <Project selectedProject={selectedProject} />
       ) : (
         <div className="empty-state-action w-full flex flex-col justify-center items-center">
           <h1 className="text-2xl my-[10px]">No Project Selected</h1>

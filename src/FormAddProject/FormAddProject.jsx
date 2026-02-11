@@ -1,11 +1,4 @@
-const FormAddProject = ({
-  onAddProject,
-  onChange,
-  form,
-  onSubmit,
-  setSelectedId,
-  error,
-}) => {
+const FormAddProject = ({ onAddProject, onChange, form, onSubmit }) => {
   return (
     <form
       className="w-full flex justify-center flex-col items-center"

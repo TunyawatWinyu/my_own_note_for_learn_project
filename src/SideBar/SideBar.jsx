@@ -1,8 +1,8 @@
 import "./sidebar.css";
 
-const SideBar = ({ addProject, onAddProject, project, setSelectedId }) => {
+const SideBar = ({ onAddProject, project, setSelectedId }) => {
   return (
-    <div className=" bg-[#222222] w-[400px] h-[100vh] mt-[60px] rounded-tr-3xl">
+    <aside className=" bg-[#222222] w-[400px] h-[100vh] mt-[60px] rounded-tr-3xl">
       <div>
         <div className="pt-[60px] flex justify-center">
           <h1 className=" text-white text-3xl">YOUR PROJECT</h1>
@@ -16,26 +16,27 @@ const SideBar = ({ addProject, onAddProject, project, setSelectedId }) => {
           </a>
         </div>
       </div>
-      <div className="project-sidebar flex flex-col justify-center items-center mt-[60px]">
+      <ul className="project-sidebar flex flex-col justify-center items-center mt-[60px]">
         {project === 0 ? (
           <p>No Project</p>
         ) : (
-          project.map((el) => {
-            return (
-              <a
-                key={el.id}
-                className="w-full text-center py-4 text-white my-2 text-1xl cursor-pointer transition duration-200 ease-in-out hover:bg-gray-600"
-                onClick={(e) => {
-                  setSelectedId(el.id);
-                }}
-              >
-                {el.title}
-              </a>
-            );
-          })
+          <ul className="w-full text-center">
+            {project.map((el) => {
+              return (
+                <li key={el.id}>
+                  <button
+                    onClick={() => setSelectedId(el.id)}
+                    className="w-full text-center py-4 text-white my-2 text-1xl cursor-pointer transition duration-200 ease-in-out hover:bg-gray-600"
+                  >
+                    {el.title}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         )}
-      </div>
-    </div>
+      </ul>
+    </aside>
   );
 };
 
